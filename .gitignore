@@ -1,0 +1,4 @@
+*.dylib
+*.app
+*.exe
+obj

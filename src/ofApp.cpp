@@ -174,7 +174,7 @@ void ofApp::setSourceMode(SourceMode mode)
 
 ofTexture &ofApp::getSourceTexture()
 {
-    if (sourceMode == SOURCE_CAMERA && videoInput.getInput()->isInitialized())
+    if (sourceMode == SOURCE_CAMERA && videoInput.getInput() && videoInput.getInput()->isInitialized())
         return videoInput.getInput()->getTexture();
 
     if (sourceMode == SOURCE_PLAYBACK && videoPlayer.isInitialized())

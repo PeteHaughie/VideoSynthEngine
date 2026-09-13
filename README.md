@@ -59,6 +59,7 @@ All 10 core abstractions extracted from the three predecessor projects:
 | Class | Origin | Purpose | File |
 |---|---|---|---|
 | `MidiController` | NTSC-Player / Channel0 | Named MIDI binding (`bindContinuous`/`bindTrigger`), threshold activation, `getByCC()` for ShaderManager interop, thread-safe message queue, port cycling | `src/MidiController.h/.cpp` |
+| `ModulationEngine` (ofxModulation) | WAAAVE_POOL_4_5 | Named LFO bank (`Oscillator`, `Lfo`) + `StepSequencer` p_lock recorder/player, ticked together each frame. MIDI/shaders stay in the app | `ofxModulation` addon |
 | `ShaderManager` | NTSC-Player | Multi-pass FBO ping-pong chain, cross-platform GL version injection (`#version 300 es` on RPi, `#version 150` on desktop), standard uniforms (`uFrameCount`, `iTime`, `iResolution`, `uSourceSize`, `uOutputSize`), MIDI param mapping | `src/ShaderManager.h/.cpp` |
 | `ShaderPresets` | NTSC-Player (extracted) | Named preset system with automatic MIDI remapping per preset. Demonstrates single-pass and multi-pass (sharpen→colourise) chains | `src/ShaderPresets.h/.cpp` |
 | `ShaderParam` | NTSC-Player | Struct: name/value/min/max/defaultValue. Used by both ShaderManager and ShaderPresets for parameter definition | `src/ShaderParam.h` |
@@ -100,6 +101,31 @@ Then create `bin/data/shaders/my_effect.frag` — it receives all standard unifo
 
 ---
 
+## Modulation (LFOs)
+
+Uses the `ofxModulation` addon. An LFO bank (`ModulationEngine`) is ticked each
+frame and applied additively on top of the MIDI/preset base values, so it works
+with any preset that exposes a matching param name.
+
+The bundled example creates one sine LFO ("hue") pointed at the `uHue` param
+(CC 24 = depth, CC 25 = rate). Toggle the waveform with `L`.
+
+```cpp
+// ofApp::setup()
+modulation.createLfo("hue")->addTarget(-1, "uHue"); // -1 = resolve by name
+modulation.getLfo("hue")->setScale(0.15f);
+
+// ofApp::update(), after shaders.applyMidi(midi)
+modulation.tick(ofGetLastFrameTime());
+applyLfoModulation();   // adds lfo->value() to each target param
+```
+
+LFO waves: `sine`, `triangle`, `saw`, `square`, `noise`, `random`. The same
+addon also provides `StepSequencer` (the WAAAVE_POOL p_lock recorder) for
+step-sequenced parameter automation.
+
+---
+
 ## Controls
 
 ### Keyboard
@@ -111,6 +137,7 @@ Then create `bin/data/shaders/my_effect.frag` — it receives all standard unifo
 | `M` | Cycle MIDI input port |
 | `F` | Toggle fullscreen |
 | `R` | Reset to passthrough preset |
+| `L` | Cycle LFO waveform (hue LFO) |
 | `0` | Test pattern source |
 | `1` | Camera source (falls back to test pattern) |
 | `2` | Video playback source (requires USB drive) |
@@ -122,6 +149,8 @@ Then create `bin/data/shaders/my_effect.frag` — it receives all standard unifo
 |---|---|---|
 | 0-7 | slider0-7 (param mapping per preset) | -1.0 – 1.0 → mapped to param min/max |
 | 16-23 | knob0-7 (param mapping per preset) | -1.0 – 1.0 → mapped to param min/max |
+| 24 | hueLfoDepth (LFO depth on `uHue`) | -1.0 – 1.0 → 0.0 – 1.0 |
+| 25 | hueLfoRate (LFO rate on `uHue`) | -1.0 – 1.0 → 0.02 – 2.0 Hz |
 | 41 | prevPreset (trigger) | edge |
 | 42 | nextPreset (trigger) | edge |
 | 43 | debug (trigger) | edge |

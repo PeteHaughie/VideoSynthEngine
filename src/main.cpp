@@ -3,10 +3,17 @@
 
 int main()
 {
+    #ifdef TARGET_OPENGLES
+	ofGLESWindowSettings settings;
+    settings.setSize(720, 480);
+	settings.glesVersion=2;
+    settings.windowMode = OF_FULLSCREEN;
+    #else
     ofGLWindowSettings settings;
-    settings.setSize(640, 480);
-    settings.windowMode = OF_WINDOW;
+    settings.setSize(720, 480);
     settings.setGLVersion(3, 2);
+    settings.windowMode = OF_WINDOW;
+    #endif
 
     auto window = ofCreateWindow(settings);
 

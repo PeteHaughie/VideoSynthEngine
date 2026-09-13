@@ -1,6 +1,8 @@
 #include "ofApp.h"
+#include <cmath>
 #include <filesystem>
 #include <fstream>
+#include <map>
 
 namespace fs = std::filesystem;
 
@@ -57,6 +59,21 @@ void ofApp::setup()
     midi.bindTrigger(45, "next");
     midi.bindTrigger(62, "reset");
     midi.setup();
+
+    // --- Modulation (ofxModulation) ---
+    // Example: a sine LFO that modulates uHue on whichever preset exposes it.
+    // CC 24 grabs depth, CC 25 grabs rate. Both start at 0 (LFO off).
+    modulation.setup();
+    Lfo *hueLfo = modulation.createLfo("hue");
+    hueLfo->addTarget(-1, "uHue");              // -1 = resolve by name across passes
+    hueLfo->oscillator().setWave(Oscillator::SINE);
+    hueLfo->oscillator().setFrequency(0.2f);
+    hueLfo->setScale(0.15f);
+    hueLfo->setDepth(0.0f);
+    hueLfo->setDepthBindable(true);
+    hueLfo->setRateBindable(true);
+    midi.bindContinuous(24, "hueLfoDepth", 0.02f);
+    midi.bindContinuous(25, "hueLfoRate", 0.02f);
 
     // --- Camera ---
     videoInput.setup(ofGetWidth(), ofGetHeight());
@@ -222,6 +239,47 @@ void ofApp::prevPreset()
     loadPreset((currentPreset - 1 + presets.size()) % presets.size());
 }
 
+int ofApp::resolveLfoPass(const Lfo::Target &target) const
+{
+    if (target.pass >= 0 && target.pass < shaders.getPassCount())
+    {
+        for (const auto &p : shaders.getParams(target.pass))
+            if (p.name == target.paramName)
+                return target.pass;
+    }
+    for (int i = 0; i < shaders.getPassCount(); i++)
+    {
+        for (const auto &p : shaders.getParams(i))
+            if (p.name == target.paramName)
+                return i;
+    }
+    return -1;
+}
+
+void ofApp::applyLfoModulation()
+{
+    // Accumulate per (pass, param) contributions, then apply additively on top
+    // of the fresh base value. Reading the base here (after shaders.applyMidi)
+    // avoids frame-to-frame compounding.
+    std::map<std::pair<int, std::string>, float> contributions;
+    for (const auto &lfo : modulation.getLfos())
+    {
+        const float v = lfo->value();
+        if (std::fabs(v) < 0.0001f) continue;
+        for (const auto &target : lfo->getTargets())
+        {
+            const int pass = resolveLfoPass(target);
+            if (pass < 0) continue;
+            contributions[{pass, target.paramName}] += v;
+        }
+    }
+    for (const auto &[key, contrib] : contributions)
+    {
+        const float base = shaders.getParam(key.first, key.second);
+        shaders.setParam(key.first, key.second, base + contrib);
+    }
+}
+
 void ofApp::update()
 {
     midi.update();
@@ -234,6 +292,18 @@ void ofApp::update()
     if (midi.fired("reset"))      loadPreset(0);
 
     shaders.applyMidi(midi);
+
+    // LFO depth/rate from MIDI (threshold-grabbed, mapped to useful ranges)
+    if (Lfo *lfo = modulation.getLfo("hue"))
+    {
+        if (midi.active("hueLfoDepth"))
+            lfo->setDepth(ofMap(midi.get("hueLfoDepth"), -1.0f, 1.0f, 0.0f, 1.0f, true));
+        if (midi.active("hueLfoRate"))
+            lfo->oscillator().setFrequency(ofMap(midi.get("hueLfoRate"), -1.0f, 1.0f, 0.02f, 2.0f, true));
+    }
+
+    modulation.tick(ofGetLastFrameTime());
+    applyLfoModulation();
 
     videoInput.update();
     videoPlayer.update();
@@ -306,9 +376,16 @@ void ofApp::draw()
                          + " | FPS: " + ofToString((int)ofGetFrameRate())
                          + " | SRC: " + srcName
                          + " | MIDI: " + ofToString(midiPorts) + " port(s)";
+        for (const auto &lfo : modulation.getLfos())
+        {
+            if (std::fabs(lfo->getDepth()) < 0.0001f) continue;
+            info += " | LFO:" + lfo->getName() + " d=" + ofToString(lfo->getDepth(), 2)
+                  + " @=" + ofToString(lfo->getRate(), 2)
+                  + " " + std::string(Oscillator::waveName(lfo->oscillator().getWave()));
+        }
         font.drawString(info, 10, 16);
 
-        std::string help = "[ ] presets  D debug  M midi port  F fullscreen";
+        std::string help = "[ ] presets  D debug  M midi port  F fullscreen  L lfo wave";
         font.drawString(help, 10, 36);
     }
 
@@ -333,6 +410,14 @@ void ofApp::keyPressed(int key)
     case 'm': case 'M': midi.cyclePort(); break;
     case 'f': case 'F': ofToggleFullscreen(); break;
     case 'r': case 'R': loadPreset(0); break;
+    case 'l': case 'L':
+        if (auto *lfo = modulation.getLfo("hue"))
+        {
+            Oscillator::Wave w = (Oscillator::Wave)((lfo->oscillator().getWave() + 1) % Oscillator::NUM_WAVES);
+            lfo->oscillator().setWave(w);
+            ofLogNotice("ofApp") << "LFO hue wave: " << Oscillator::waveName(w);
+        }
+        break;
     case '0': sourceMode = SOURCE_TEST_PATTERN; break;
     case '1': setSourceMode(videoInput.isInputDeviceConnected() ? SOURCE_CAMERA : SOURCE_TEST_PATTERN); break;
     case '2': if (!files.empty()) setSourceMode(SOURCE_PLAYBACK); break;

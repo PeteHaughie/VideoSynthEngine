@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxModulation.h"
 #include "MidiController.h"
 #include "ShaderManager.h"
 #include "ShaderPresets.h"
@@ -40,6 +41,10 @@ private:
     MidiController midi;
     ShaderManager shaders;
     ShaderPresets presets;
+
+    ModulationEngine modulation;
+    void applyLfoModulation();
+    int resolveLfoPass(const Lfo::Target &target) const;
 
     VideoInputManager videoInput;
     VideoPlayer videoPlayer;

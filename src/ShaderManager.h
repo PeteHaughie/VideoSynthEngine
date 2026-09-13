@@ -8,11 +8,22 @@
 
 class MidiController;
 
+enum class PassInputSource { PREV_PASS, SOURCE_INPUT, SELF_FEEDBACK };
+
+struct PassInput
+{
+    std::string samplerName = "src";
+    PassInputSource source = PassInputSource::PREV_PASS;
+};
+
 struct ShaderPass
 {
     ofShader shader;
     std::string name;
     std::vector<ShaderParam> params;
+    std::vector<PassInput> inputs;
+    ofFbo feedback[2];
+    int feedbackIndex = 0;
 };
 
 class ShaderManager
@@ -29,7 +40,8 @@ public:
     int addPass(const std::string &shaderName,
                 const std::string &vertPath,
                 const std::string &fragPath,
-                const std::vector<ShaderParam> &params = {});
+                const std::vector<ShaderParam> &params = {},
+                const std::vector<PassInput> &inputs = {});
 
     void setParam(int passIndex, const std::string &name, float value);
     float getParam(int passIndex, const std::string &name) const;
@@ -52,7 +64,4 @@ private:
     int fboWidth;
     int fboHeight;
     bool debug;
-
-    ofFbo fboA;
-    ofFbo fboB;
 };

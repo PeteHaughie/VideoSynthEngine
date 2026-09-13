@@ -60,8 +60,8 @@ All 10 core abstractions extracted from the three predecessor projects:
 |---|---|---|---|
 | `MidiController` | NTSC-Player / Channel0 | Named MIDI binding (`bindContinuous`/`bindTrigger`), threshold activation, `getByCC()` for ShaderManager interop, thread-safe message queue, port cycling | `src/MidiController.h/.cpp` |
 | `ModulationEngine` (ofxModulation) | WAAAVE_POOL_4_5 | Named LFO bank (`Oscillator`, `Lfo`) + `StepSequencer` p_lock recorder/player, ticked together each frame. MIDI/shaders stay in the app | `ofxModulation` addon |
-| `ShaderManager` | NTSC-Player | Multi-pass FBO ping-pong chain, cross-platform GL version injection (`#version 300 es` on RPi, `#version 150` on desktop), standard uniforms (`uFrameCount`, `iTime`, `iResolution`, `uSourceSize`, `uOutputSize`), MIDI param mapping | `src/ShaderManager.h/.cpp` |
-| `ShaderPresets` | NTSC-Player (extracted) | Named preset system with automatic MIDI remapping per preset. Demonstrates single-pass and multi-pass (sharpen→colourise) chains | `src/ShaderPresets.h/.cpp` |
+| `ShaderManager` | NTSC-Player / datamosh / LightHerderDevice | Multi-pass chain with **per-pass ping-pong FBO pairs** and **declarable multi-texture inputs** (`PREV_PASS`, `SOURCE_INPUT`, `SELF_FEEDBACK`), shared `common.glsl` header injection, cross-platform GL version injection (`#version 300 es` on RPi, `#version 150` on desktop), standard uniforms (`uFrameCount`, `iTime`, `iResolution`, `uSourceSize`, `uOutputSize`), MIDI param mapping | `src/ShaderManager.h/.cpp` |
+| `ShaderPresets` | NTSC-Player / datamosh | Named preset system with automatic MIDI remapping per preset. Demonstrates single-pass, multi-pass, source-blend, and temporal self-feedback chains | `src/ShaderPresets.h/.cpp` |
 | `ShaderParam` | NTSC-Player | Struct: name/value/min/max/defaultValue. Used by both ShaderManager and ShaderPresets for parameter definition | `src/ShaderParam.h` |
 | `FrameBuffer` | Mantis | Header-only ring buffer of `ofPixels`. `addFrame()`, `removeFirstFrame()`, `getFrame()`, `getAllFrames()`, `setFrames()`, `resize()` | `src/FrameBuffer.h` |
 | `VideoInputManager` | Mantis | Auto-detects suitable capture devices (filters `bcm2835` ISP devices on RPi), periodic polling for hotplug, device cycling | `src/VideoInputManager.h/.cpp` |
@@ -81,8 +81,12 @@ All 10 core abstractions extracted from the three predecessor projects:
 | 2 | sharpen | 1 | uAmount | CC 0 |
 | 3 | mix | 1 | uMix | CC 0 |
 | 4 | sharpen+colour | 2 | sharpen(uAmount) → colourise(uHue/uSat/uCon/uBri) | CC 0-5 |
+| 5 | feedback trail | 1 | uMix, uDecay, uSaturation (reads source + own previous frame) | CC 0-2 |
+| 6 | source blend | 2 | sharpen(uAmount) → blend(prev ↔ source, uMix) | CC 0-3 |
 
 Presets are defined in `ShaderPresets::setup()`. Each param maps to a MIDI CC (sliders CC 0-7, knobs CC 16-23). Switching presets automatically remaps MIDI bindings.
+
+Presets 5-6 demonstrate the multi-texture signal-flow extensions: a pass can bind **several named samplers** simultaneously, each fed from the source texture, the previous pass output, or the pass's *own* previous frame (temporal feedback). Both compass bearings come from `datamosh` (per-stage feedback pairs + multi-texture inputs) and `LightHerderDevice` (self-history loops).
 
 ### Adding a New Preset
 
@@ -98,6 +102,45 @@ presets.push_back({"my-effect", {{"my-effect", "shaders/passthru.vert", "shaders
 ```
 
 Then create `bin/data/shaders/my_effect.frag` — it receives all standard uniforms plus your custom params.
+
+### Multi-texture inputs
+
+A pass declares extra inputs with a sampler name + a source kind:
+
+```cpp
+{{"feedback-pass", "shaders/passthru.vert", "shaders/feedback.frag",
+    {
+        {"uMix",   1.0f, 0.0f, 1.0f, 1.0f},
+        {"uDecay", 0.9f, 0.0f, 1.0f, 0.9f},
+    },
+    {
+        {"src",  PassInputSource::SOURCE_INPUT},   // original camera/video/test-pattern
+        {"fb",   PassInputSource::SELF_FEEDBACK},  // this pass's own previous frame
+    }
+}}
+```
+
+| source kind | feeds the sampler |
+|---|---|
+| `PREV_PASS` | previous pass output (the default single `src`) |
+| `SOURCE_INPUT` | the original source texture |
+| `SELF_FEEDBACK` | this pass's own previous frame |
+
+Associated `frag` shader:
+
+```glsl
+uniform sampler2D src;
+uniform sampler2D fb;
+
+void main()
+{
+    vec4 a = texture(src, vTexCoord);
+    vec4 b = texture(fb,  vTexCoord);
+    fragColor = mix(a, b, 0.5);
+}
+```
+
+Every pass keeps its own ping-pong FBO pair (one per stage, datamosh-style), so any mix of the three source kinds works in any order. Without declared inputs a pass behaves exactly as before — the default is `{ {"src", PREV_PASS} }`.
 
 ---
 
@@ -216,22 +259,35 @@ On non-RPi platforms, `ButtonController` and `RotaryEncoderController` compile t
 | `uSourceSize` | `vec2` | Source texture width, height |
 | `uOutputSize` | `vec2` | Output FBO width, height |
 
-### Texture Sampler
+### Texture Samplers
+
+Every pass can declare **multiple** named samplers. The default input is `src` (the previous stage output). Additional inputs are declared per pass in the preset spec (see *Multi-texture inputs* above):
 
 ```glsl
-uniform sampler2D src;
+uniform sampler2D src;   // previous pass output (or source for pass 0)
+uniform sampler2D fb;    // optional: this pass's own previous frame
 ```
 
-Your fragment shader receives the source texture through `src`. Coordinates are normalized (0.0 – 1.0). The texture target is always `GL_TEXTURE_2D` (`ofDisableArbTex()` is called at setup).
+Coordinates are normalized (0.0 – 1.0). The texture target is always `GL_TEXTURE_2D` (`ofDisableArbTex()` is called at setup).
 
 ### Multi-pass Chaining
 
-When a preset has multiple passes, each pass receives the previous pass's output as its `src`. Passes are processed left-to-right in the FBO ping-pong chain:
+The default input chain works left-to-right: each pass receives the previous pass's output as its `src`, rendered through that pass's own ping-pong FBO pair:
 
 ```
-passthrough.vert             passthrough.vert
-sharpen.frag      ───▶      colourise.frag      ───▶ screen
-                  FBO A                      FBO B
+passthrough.vert                passthrough.vert
+sharpen.frag   ───▶             colourise.frag   ───▶ screen
+              pass 0 (FBO 0/1)                 pass 1 (FBO 0/1)
+```
+
+Because each stage owns its feedback pair, `SELF_FEEDBACK` inputs create real temporal loops (persistence, trails, datamosh-style feedback):
+
+```
+                own previous frame (SELF_FEEDBACK)
+                      │
+camera ──▶  feedback.frag  ──▶  screen
+                      ▲
+                written each frame
 ```
 
 ### Example: Simple Invert
@@ -286,12 +342,15 @@ VideoSynthEngine/
 │   └── RotaryEncoderController.h / .cpp  # GPIO encoder (RPi, stubs elsewhere)
 ├── bin/data/
 │   ├── shaders/
-│   │   ├── passthru.vert             # Vertex shader (used by all presets)
-│   │   ├── passthru.frag             # No-op fragment shader
-│   │   ├── test_pattern.frag         # Procedural color bars + grid
-│   │   ├── colouriser.frag           # Hue/saturation/contrast/brightness
-│   │   ├── sharpen.frag              # Unsharp mask (uses uSourceSize)
-│   │   └── mixer.frag               # Mirror crossfade
+│   │   ├── common.glsl             # Shared constants/helpers (prepended to all shaders)
+│   │   ├── passthru.vert           # Vertex shader (used by all presets)
+│   │   ├── passthru.frag           # No-op fragment shader
+│   │   ├── test_pattern.frag       # Procedural color bars + grid
+│   │   ├── colouriser.frag         # Hue/saturation/contrast/brightness
+│   │   ├── sharpen.frag            # Unsharp mask (uses uSourceSize)
+│   │   ├── mixer.frag             # Mirror crossfade
+│   │   ├── feedback.frag           # Source + self-feedback trail (preset 5)
+│   │   └── source_mix.frag        # Previous-pass ↔ source blend (preset 6)
 │   └── fonts/
 │       └── VCR_OSD_MONO_1.001.ttf    # Screen-optimized monospace font
 ├── addons.make                       # ofxMidi

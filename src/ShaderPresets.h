@@ -14,6 +14,7 @@ public:
         std::string vertFile;
         std::string fragFile;
         std::vector<ShaderParam> params;
+        std::vector<PassInput> inputs;
     };
 
     struct Preset

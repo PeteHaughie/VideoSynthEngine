@@ -27,27 +27,9 @@ static void allocateFbo(ofFbo &fb, int w, int h)
     s.wrapModeHorizontal = GL_CLAMP_TO_EDGE;
     s.wrapModeVertical = GL_CLAMP_TO_EDGE;
     fb.allocate(s);
-}
-
-void ShaderManager::setup(int width, int height)
-{
-    fboWidth = width;
-    fboHeight = height;
-    allocateFbo(fboA, width, height);
-    allocateFbo(fboB, width, height);
-}
-
-void ShaderManager::update()
-{
-    int w = ofGetWidth();
-    int h = ofGetHeight();
-    if (w != fboWidth || h != fboHeight)
-    {
-        fboWidth = w;
-        fboHeight = h;
-        allocateFbo(fboA, w, h);
-        allocateFbo(fboB, w, h);
-    }
+    fb.begin();
+    ofClear(0, 0, 0, 0);
+    fb.end();
 }
 
 std::string ShaderManager::getVersionHeader()
@@ -57,6 +39,15 @@ std::string ShaderManager::getVersionHeader()
 #else
     return "#version 150\n";
 #endif
+}
+
+static std::string loadCommonHeader()
+{
+    static std::string cached;
+    if (!cached.empty()) return cached;
+    ofBuffer buf = ofBufferFromFile("shaders/common.glsl");
+    if (buf.size()) cached = buf.getText();
+    return cached;
 }
 
 std::string ShaderManager::loadSource(const std::string &path) const
@@ -83,7 +74,34 @@ std::string ShaderManager::loadSource(const std::string &path) const
     else
         body = src;
 
-    return getVersionHeader() + body;
+    return getVersionHeader() + loadCommonHeader() + body;
+}
+
+void ShaderManager::setup(int width, int height)
+{
+    fboWidth = width;
+    fboHeight = height;
+    for (auto &pass : passes)
+    {
+        allocateFbo(pass.feedback[0], width, height);
+        allocateFbo(pass.feedback[1], width, height);
+    }
+}
+
+void ShaderManager::update()
+{
+    int w = ofGetWidth();
+    int h = ofGetHeight();
+    if (w != fboWidth || h != fboHeight)
+    {
+        fboWidth = w;
+        fboHeight = h;
+        for (auto &pass : passes)
+        {
+            allocateFbo(pass.feedback[0], w, h);
+            allocateFbo(pass.feedback[1], w, h);
+        }
+    }
 }
 
 void ShaderManager::clearPasses()
@@ -94,11 +112,15 @@ void ShaderManager::clearPasses()
 int ShaderManager::addPass(const std::string &shaderName,
                             const std::string &vertPath,
                             const std::string &fragPath,
-                            const std::vector<ShaderParam> &params)
+                            const std::vector<ShaderParam> &params,
+                            const std::vector<PassInput> &inputs)
 {
     ShaderPass pass;
     pass.name = shaderName;
     pass.params = params;
+    pass.inputs = inputs;
+    if (pass.inputs.empty())
+        pass.inputs.push_back({"src", PassInputSource::PREV_PASS});
 
     std::string vertSrc = loadSource(vertPath);
     std::string fragSrc = loadSource(fragPath);
@@ -218,47 +240,85 @@ void ShaderManager::draw(ofTexture &input, float x, float y, float w, float h)
     if (passes.empty()) return;
     if (!input.isAllocated()) return;
 
-    if (fboA.getWidth() != (size_t)fboWidth || fboA.getHeight() != (size_t)fboHeight)
+    if (passes.front().feedback[0].getWidth() != (size_t)fboWidth ||
+        passes.front().feedback[0].getHeight() != (size_t)fboHeight)
     {
-        allocateFbo(fboA, fboWidth, fboHeight);
-        allocateFbo(fboB, fboWidth, fboHeight);
+        for (auto &pass : passes)
+        {
+            allocateFbo(pass.feedback[0], fboWidth, fboHeight);
+            allocateFbo(pass.feedback[1], fboWidth, fboHeight);
+        }
     }
-
-    ofFbo *prevFbo = nullptr;
-    ofFbo *curFbo = &fboA;
 
     for (size_t i = 0; i < passes.size(); i++)
     {
-        ofShader &shader = passes[i].shader;
-        const ofTexture &src = (i == 0)
-            ? input
-            : prevFbo->getTexture();
+        ShaderPass &pass = passes[i];
+        ofShader &shader = pass.shader;
+        ShaderPass *prevPass = (i > 0) ? &passes[i - 1] : nullptr;
+        ofFbo &target = pass.feedback[pass.feedbackIndex];
 
-        curFbo->begin();
+        target.begin();
         ofClear(0, 0, 0, 0);
 
         shader.begin();
 
-        for (const auto &p : passes[i].params)
+        for (const auto &p : pass.params)
             shader.setUniform1f(p.name, p.value);
 
         shader.setUniform1f("uFrameCount", (float)ofGetFrameNum());
         shader.setUniform1i("iFrame", ofGetFrameNum());
         shader.setUniform1f("iTime", (float)ofGetFrameNum() / 60.0f);
         shader.setUniform3f("iResolution", (float)fboWidth, (float)fboHeight, 0.0f);
-        shader.setUniform2f("uSourceSize", (float)src.getWidth(), (float)src.getHeight());
         shader.setUniform2f("uOutputSize", (float)fboWidth, (float)fboHeight);
 
-        src.draw(0, 0, curFbo->getWidth(), curFbo->getHeight());
+        const ofTexture *primarySrc = nullptr;
+        int texUnit = 0;
+        for (const auto &in : pass.inputs)
+        {
+            const ofTexture *src = nullptr;
+            switch (in.source)
+            {
+            case PassInputSource::PREV_PASS:
+                src = prevPass ? &prevPass->feedback[1 - prevPass->feedbackIndex].getTexture()
+                               : &input;
+                break;
+            case PassInputSource::SOURCE_INPUT:
+                src = &input;
+                break;
+            case PassInputSource::SELF_FEEDBACK:
+                src = &pass.feedback[1 - pass.feedbackIndex].getTexture();
+                break;
+            }
+            if (src && src->isAllocated())
+            {
+                shader.setUniformTexture(in.samplerName, *src, texUnit);
+                if (primarySrc == nullptr) primarySrc = src;
+            }
+            texUnit++;
+        }
+
+        if (primarySrc)
+            shader.setUniform2f("uSourceSize", (float)primarySrc->getWidth(), (float)primarySrc->getHeight());
+
+        ofMesh quad;
+        quad.setMode(OF_PRIMITIVE_TRIANGLE_FAN);
+        quad.addVertex(glm::vec3(0, 0, 0));
+        quad.addVertex(glm::vec3(fboWidth, 0, 0));
+        quad.addVertex(glm::vec3(fboWidth, fboHeight, 0));
+        quad.addVertex(glm::vec3(0, fboHeight, 0));
+        quad.addTexCoord(glm::vec2(0, 0));
+        quad.addTexCoord(glm::vec2(1, 0));
+        quad.addTexCoord(glm::vec2(1, 1));
+        quad.addTexCoord(glm::vec2(0, 1));
+        quad.draw();
 
         shader.end();
-        curFbo->end();
+        target.end();
 
-        prevFbo = curFbo;
-        curFbo = (curFbo == &fboA) ? &fboB : &fboA;
+        pass.feedbackIndex = 1 - pass.feedbackIndex;
     }
 
-    prevFbo->draw(x, y, w, h);
+    passes.back().feedback[1 - passes.back().feedbackIndex].draw(x, y, w, h);
 
     if (debug)
     {

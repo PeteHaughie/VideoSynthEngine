@@ -41,6 +41,33 @@ void ShaderPresets::setup()
             }
         },
     }});
+
+    presets.push_back({"feedback trail", {{"feedback-pass", "shaders/passthru.vert", "shaders/feedback.frag",
+        {
+            {"uMix",   1.0f, 0.0f, 1.0f, 1.0f},
+            {"uDecay", 0.9f, 0.0f, 1.0f, 0.9f},
+            {"uSaturation", 0.6f, -1.0f, 1.0f, 0.6f},
+        },
+        {
+            {"src",  PassInputSource::SOURCE_INPUT},
+            {"fb",   PassInputSource::SELF_FEEDBACK},
+        }
+    }}});
+
+    presets.push_back({"source blend", {
+        {"sharpen-pass", "shaders/passthru.vert", "shaders/sharpen.frag",
+            {{"uAmount", 1.0f, 0.0f, 5.0f, 1.0f}}
+        },
+        {"blend-pass", "shaders/passthru.vert", "shaders/source_mix.frag",
+            {
+                {"uMix", 0.5f, 0.0f, 1.0f, 0.5f},
+            },
+            {
+                {"prev", PassInputSource::PREV_PASS},
+                {"src",  PassInputSource::SOURCE_INPUT},
+            }
+        },
+    }});
 }
 
 const ShaderPresets::Preset &ShaderPresets::get(int index) const
@@ -64,7 +91,8 @@ void ShaderPresets::loadInto(ShaderManager &shaders, int index,
 
     for (const auto &passSpec : preset.passes)
     {
-        int passIdx = shaders.addPass(passSpec.name, passSpec.vertFile, passSpec.fragFile, passSpec.params);
+        int passIdx = shaders.addPass(passSpec.name, passSpec.vertFile, passSpec.fragFile,
+                                      passSpec.params, passSpec.inputs);
         if (passIdx < 0)
         {
             ofLogError("ShaderPresets") << "Failed to load pass " << passSpec.name << " in preset " << preset.name;

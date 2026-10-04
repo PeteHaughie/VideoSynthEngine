@@ -31,11 +31,18 @@ void VideoInputManager::setup(int width, int height) {
         input->setDeviceID(currentDeviceID);
         input->setDesiredFrameRate(30);
         input->setup(width, height);
-        inputDeviceConnected = true;
+        inputDeviceConnected = input->isInitialized();
+        if (!inputDeviceConnected)
+            ofLogError() << "Capture device present but failed to initialise";
     } else {
         inputDeviceConnected = false;
         ofLogError() << "No suitable capture device found!";
     }
+#ifdef __linux__
+    // Baseline the cheap /dev/video* count so the first poll does not falsely
+    // report a change.
+    lastVideoDeviceCount = getVideoDeviceCount();
+#endif
 }
 
 void VideoInputManager::refreshInputDevices() {
@@ -50,9 +57,15 @@ void VideoInputManager::refreshInputDevices() {
         }
         currentDeviceID = suitableDeviceIDs[currentDeviceIndex];
         input->setDeviceID(currentDeviceID);
+        input->setDesiredFrameRate(30);
         input->setup(ofGetWidth(), ofGetHeight());
-        inputDeviceConnected = true;
-        ofLogNotice() << "Auto-selected video device: " << currentDeviceID;
+        // The node can appear before the device is ready to stream; only report
+        // connected once the grabber actually initialised, so the poll retries.
+        inputDeviceConnected = input->isInitialized();
+        if (inputDeviceConnected)
+            ofLogNotice() << "Auto-selected video device: " << currentDeviceID;
+        else
+            ofLogError() << "Capture device " << currentDeviceID << " failed to initialise";
     } else {
         inputDeviceConnected = false;
         ofLogError() << "No suitable capture device found after refresh!";
@@ -106,41 +119,55 @@ void VideoInputManager::update() {
         input->update();
     }
 
-    if (inputDeviceConnected && input && input->isInitialized()) {
-        uint64_t now = ofGetElapsedTimeMillis();
-        if (now - lastInputPollTime > inputPollInterval) {
-
-#ifdef __linux__
-            size_t currentCount = getVideoDeviceCount();
-            if (currentCount != lastVideoDeviceCount) {
-                deviceChangeDetected = true;
-                lastVideoDeviceCount = currentCount;
-                ofLogNotice() << "Linux /dev/video* count changed: " << currentCount;
-            }
-#endif
-
-            auto devices = input->listDevices();
-            auto currentIDs = getSuitableDeviceIDs(devices);
-
-            if (currentIDs != lastSuitableDeviceIDs) {
-                deviceChangeDetected = true;
-                lastSuitableDeviceIDs = currentIDs;
-                ofLogNotice() << "Video device change detected!";
-            }
-
-            suitableDeviceIDs = getSuitableDeviceIDs(devices);
-
-            if (std::find(suitableDeviceIDs.begin(), suitableDeviceIDs.end(), currentDeviceID) == suitableDeviceIDs.end()) {
-                inputDeviceConnected = false;
-                input->close();
-                if (input->isInitialized()) {
-                    ofLogWarning() << "input still reports initialized after close()!";
-                }
-                ofLogError() << "Current video input device disconnected!";
-            }
-            lastInputPollTime = now;
-        }
+    uint64_t now = ofGetElapsedTimeMillis();
+    if (now - lastInputPollTime <= inputPollInterval) {
+        return;
     }
+    lastInputPollTime = now;
+
+    // Re-scan for devices. On the Pi the fixed bcm2835 codec/ISP nodes keep the
+    // /dev/video* count steady, so a change means a USB capture card was added
+    // or removed. Use that cheap check as the trigger and only fall back to the
+    // (udev-probing, log-heavy) listDevices() when something changed, or while a
+    // device we tried to open has not initialised yet. Polling unconditionally
+    // here -- not only when a device is already open -- is what makes a card
+    // hotplugged after a camera-less boot get picked up.
+    bool rescan = true;
+#ifdef __linux__
+    size_t currentCount = getVideoDeviceCount();
+    rescan = (currentCount != lastVideoDeviceCount) || pendingOpen;
+    lastVideoDeviceCount = currentCount;
+#endif
+    if (!rescan) {
+        return;
+    }
+
+    // Probe with a throwaway grabber. ofGstVideoGrabber caches its device list
+    // (camData.bInited), so calling listDevices() on the long-lived grabber
+    // would keep returning the boot-time list and never see a hotplugged card.
+    ofVideoGrabber probe;
+    auto currentIDs = getSuitableDeviceIDs(probe.listDevices());
+
+    if (inputDeviceConnected) {
+        // Already latched: only react if our device disappeared.
+        if (std::find(currentIDs.begin(), currentIDs.end(), currentDeviceID) == currentIDs.end()) {
+            ofLogError() << "Current video input device disconnected!";
+            input->close();
+            inputDeviceConnected = false;
+            suitableDeviceIDs.clear();
+        }
+        pendingOpen = false;
+    } else if (!currentIDs.empty()) {
+        // A card appeared (or is present but was never opened): latch it.
+        ofLogNotice() << "Capture device available; opening";
+        refreshInputDevices();
+        // If it did not initialise, retry on the next tick.
+        pendingOpen = !inputDeviceConnected;
+    } else {
+        pendingOpen = false;
+    }
+
+    lastSuitableDeviceIDs = currentIDs;
 }
 
 void VideoInputManager::close() {

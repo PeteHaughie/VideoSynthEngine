@@ -32,6 +32,5 @@ private:
     bool inputDeviceConnected = false;
     uint64_t lastInputPollTime = 0;
     uint64_t inputPollInterval = 1000;
-    bool needsGrabberRefresh = false;
-    bool deviceChangeDetected = false;
+    bool pendingOpen = false;
 };

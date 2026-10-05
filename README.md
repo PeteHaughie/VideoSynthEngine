@@ -60,7 +60,7 @@ All 10 core abstractions extracted from the three predecessor projects:
 |---|---|---|---|
 | `MidiController` | NTSC-Player / Channel0 | Named MIDI binding (`bindContinuous`/`bindTrigger`), threshold activation, `getByCC()` for ShaderManager interop, thread-safe message queue, port cycling | `src/MidiController.h/.cpp` |
 | `ModulationEngine` (ofxModulation) | WAAAVE_POOL_4_5 | Named LFO bank (`Oscillator`, `Lfo`) + `StepSequencer` p_lock recorder/player, ticked together each frame. MIDI/shaders stay in the app | `ofxModulation` addon |
-| `ShaderManager` | NTSC-Player / datamosh / LightHerderDevice | Multi-pass chain with **per-pass ping-pong FBO pairs** and **declarable multi-texture inputs** (`PREV_PASS`, `SOURCE_INPUT`, `SELF_FEEDBACK`), shared `common.glsl` header injection, cross-platform GL version injection (`#version 300 es` on RPi, `#version 150` on desktop), standard uniforms (`uFrameCount`, `iTime`, `iResolution`, `uSourceSize`, `uOutputSize`), MIDI param mapping | `src/ShaderManager.h/.cpp` |
+| `ShaderManager` | NTSC-Player / datamosh / LightHerderDevice | Multi-pass chain with **per-pass ping-pong FBO pairs** and **declarable multi-texture inputs** (`PREV_PASS`, `SOURCE_INPUT`, `SELF_FEEDBACK`), shared `common.glsl` header injection, cross-platform GL version injection (`#version 100` on a Pi 3, `#version 150` on desktop), standard uniforms (`uFrameCount`, `iTime`, `iResolution`, `uSourceSize`, `uOutputSize`), MIDI param mapping | `src/ShaderManager.h/.cpp` |
 | `ShaderPresets` | NTSC-Player / datamosh | Named preset system with automatic MIDI remapping per preset. Demonstrates single-pass, multi-pass, source-blend, and temporal self-feedback chains | `src/ShaderPresets.h/.cpp` |
 | `ShaderParam` | NTSC-Player | Struct: name/value/min/max/defaultValue. Used by both ShaderManager and ShaderPresets for parameter definition | `src/ShaderParam.h` |
 | `FrameBuffer` | Mantis | Header-only ring buffer of `ofPixels`. `addFrame()`, `removeFirstFrame()`, `getFrame()`, `getAllFrames()`, `setFrames()`, `resize()` | `src/FrameBuffer.h` |
@@ -363,7 +363,7 @@ VideoSynthEngine/
 ## Cross-Platform Notes
 
 - **macOS**: Primary development target. Window mode at 720×480, GL 3.2 core profile, `#version 150` shaders.
-- **Raspberry Pi**: Set `TARGET_RASPBERRY_PI` for GLES 3.0 shader version (`#version 300 es`). GPIO controllers auto-enable when wiringPi is detected.
+- **Raspberry Pi**: A Pi 3 (VideoCore IV / Mesa `vc4`) is **OpenGL ES 2.0 only**, so `TARGET_RASPBERRY_PI` uses `#version 100` (GLSL ES 1.00) and `glesVersion = 2`. There is no GLES 3 on a Pi 3 (that needs a Pi 4's V3D). GPIO controllers auto-enable when wiringPi is detected.
 - **Linux desktop**: Same shader path as macOS. GPIO controllers compile to no-ops. Ensure `ofxMidi` is installed.
 - **Video playback**: Standard `.mov`/`.mp4` via `ofVideoPlayer`. Use H.264 or PhotoJPEG for reliable seeking on embedded devices.
 - **USB storage**: `DriveWatcher` polls `/Volumes` (macOS) or `/media` (Linux). Video files are discovered recursively per volume.

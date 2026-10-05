@@ -1,0 +1,270 @@
+{
+  "layout": {
+    "master": {
+      "track": [
+        {
+          "label": "left",
+          "cc": 58
+        },
+        {
+          "label": "right",
+          "cc": 59
+        }
+      ],
+      "cue": [
+        {
+          "label": "cycle",
+          "cc": 46
+        },
+        {
+          "marker": [
+            {
+              "label": "set",
+              "cc": 60
+            },
+            {
+              "label": "left",
+              "cc": 61
+            },
+            {
+              "label": "right",
+              "cc": 62
+            }
+          ]
+        }
+      ],
+      "transport": [
+        {
+          "label": "reverse",
+          "cc": 43
+        },
+        {
+          "label": "forward",
+          "cc": 44
+        },
+        {
+          "label": "stop",
+          "cc": 42
+        },
+        {
+          "label": "play",
+          "cc": 41
+        },
+        {
+          "label": "record",
+          "cc": 45
+        }
+      ]
+    },
+    "controls": [
+      {
+        "group1": {
+          "pot": {
+            "label": "pot1",
+            "cc": 16
+          },
+          "fader": {
+            "label": "fader1",
+            "cc": 0
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 32
+            },
+            {
+              "label": "solo",
+              "cc": 48
+            },
+            {
+              "label": "record",
+              "cc": 64
+            }
+          ]
+        }
+      },
+      {
+        "group2": {
+          "pot": {
+            "label": "pot2",
+            "cc": 17
+          },
+          "fader": {
+            "label": "fader2",
+            "cc": 1
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 33
+            },
+            {
+              "label": "solo",
+              "cc": 49
+            },
+            {
+              "label": "record",
+              "cc": 65
+            }
+          ]
+        }
+      },
+      {
+        "group3": {
+          "pot": {
+            "label": "pot3",
+            "cc": 18
+          },
+          "fader": {
+            "label": "fader3",
+            "cc": 2
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 34
+            },
+            {
+              "label": "solo",
+              "cc": 50
+            },
+            {
+              "label": "record",
+              "cc": 66
+            }
+          ]
+        }
+      },
+      {
+        "group4": {
+          "pot": {
+            "label": "pot4",
+            "cc": 19
+          },
+          "fader": {
+            "label": "fader4",
+            "cc": 3
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 35
+            },
+            {
+              "label": "solo",
+              "cc": 51
+            },
+            {
+              "label": "record",
+              "cc": 67
+            }
+          ]
+        }
+      },
+      {
+        "group5": {
+          "pot": {
+            "label": "pot5",
+            "cc": 20
+          },
+          "fader": {
+            "label": "fader5",
+            "cc": 4
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 36
+            },
+            {
+              "label": "solo",
+              "cc": 52
+            },
+            {
+              "label": "record",
+              "cc": 68
+            }
+          ]
+        }
+      },
+      {
+        "group6": {
+          "pot": {
+            "label": "pot6",
+            "cc": 21
+          },
+          "fader": {
+            "label": "fader6",
+            "cc": 5
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 37
+            },
+            {
+              "label": "solo",
+              "cc": 53
+            },
+            {
+              "label": "record",
+              "cc": 69
+            }
+          ]
+        }
+      },
+      {
+        "group7": {
+          "pot": {
+            "label": "pot7",
+            "cc": 22
+          },
+          "fader": {
+            "label": "fader7",
+            "cc": 6
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 38
+            },
+            {
+              "label": "solo",
+              "cc": 54
+            },
+            {
+              "label": "record",
+              "cc": 70
+            }
+          ]
+        }
+      },
+      {
+        "group8": {
+          "pot": {
+            "label": "pot8",
+            "cc": 23
+          },
+          "fader": {
+            "label": "fader8",
+            "cc": 7
+          },
+          "buttons": [
+            {
+              "label": "mute",
+              "cc": 39
+            },
+            {
+              "label": "solo",
+              "cc": 55
+            },
+            {
+              "label": "record",
+              "cc": 71
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -60,11 +60,11 @@
       {
         "group1": {
           "pot": {
-            "label": "pot1",
+            "label": "pot",
             "cc": 16
           },
           "fader": {
-            "label": "fader1",
+            "label": "fader",
             "cc": 0
           },
           "buttons": [
@@ -86,11 +86,11 @@
       {
         "group2": {
           "pot": {
-            "label": "pot2",
+            "label": "pot",
             "cc": 17
           },
           "fader": {
-            "label": "fader2",
+            "label": "fader",
             "cc": 1
           },
           "buttons": [
@@ -112,11 +112,11 @@
       {
         "group3": {
           "pot": {
-            "label": "pot3",
+            "label": "pot",
             "cc": 18
           },
           "fader": {
-            "label": "fader3",
+            "label": "fader",
             "cc": 2
           },
           "buttons": [
@@ -138,11 +138,11 @@
       {
         "group4": {
           "pot": {
-            "label": "pot4",
+            "label": "pot",
             "cc": 19
           },
           "fader": {
-            "label": "fader4",
+            "label": "fader",
             "cc": 3
           },
           "buttons": [
@@ -164,11 +164,11 @@
       {
         "group5": {
           "pot": {
-            "label": "pot5",
+            "label": "pot",
             "cc": 20
           },
           "fader": {
-            "label": "fader5",
+            "label": "fader",
             "cc": 4
           },
           "buttons": [
@@ -216,11 +216,11 @@
       {
         "group7": {
           "pot": {
-            "label": "pot7",
+            "label": "pot",
             "cc": 22
           },
           "fader": {
-            "label": "fader7",
+            "label": "fader",
             "cc": 6
           },
           "buttons": [
@@ -242,11 +242,11 @@
       {
         "group8": {
           "pot": {
-            "label": "pot8",
+            "label": "pot",
             "cc": 23
           },
           "fader": {
-            "label": "fader8",
+            "label": "fader",
             "cc": 7
           },
           "buttons": [

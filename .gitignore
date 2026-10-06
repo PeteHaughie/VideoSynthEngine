@@ -1,4 +1,5 @@
 *.dylib
 *.app
 *.exe
+*~lock~
 obj

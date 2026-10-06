@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nanoKONTROL 2 surface layout",
+  "description": "Machine-readable description of the Korg nanoKONTROL 2 physical control surface and the MIDI Control Change (CC) number each control transmits. This describes the device inventory only; project-specific parameter bindings belong in a separate control map that references these control ids.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["device", "surface"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "device": { "$ref": "#/$defs/device" },
+    "surface": { "$ref": "#/$defs/surface" }
+  },
+  "$defs": {
+    "identifier": {
+      "description": "Stable, unique, dotted identifier (e.g. ch1.fader, transport.play).",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9]+)*$"
+    },
+    "controlType": {
+      "description": "Physical kind of control.",
+      "enum": ["button", "knob", "fader"]
+    },
+    "control": {
+      "description": "A single physical control and the CC it emits.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "cc", "type"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": {
+          "description": "Human-facing label as printed on the device, if any.",
+          "type": "string"
+        },
+        "cc": {
+          "description": "MIDI Control Change number (0-127).",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "type": { "$ref": "#/$defs/controlType" }
+      }
+    },
+    "controlList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/control" }
+    },
+    "group": {
+      "description": "A named cluster of related controls.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["controls"],
+      "properties": {
+        "controls": { "$ref": "#/$defs/controlList" }
+      }
+    },
+    "channel": {
+      "description": "One of the eight identical channel strips: a fader, a pot (knob), and solo/mute/record buttons.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "fader", "pot", "buttons"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "label": {
+          "description": "Channel number as printed on the device (\"1\"-\"8\").",
+          "type": "string"
+        },
+        "fader": { "$ref": "#/$defs/control" },
+        "pot": { "$ref": "#/$defs/control" },
+        "buttons": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["solo", "mute", "record"],
+          "properties": {
+            "solo": { "$ref": "#/$defs/control" },
+            "mute": { "$ref": "#/$defs/control" },
+            "record": { "$ref": "#/$defs/control" }
+          }
+        }
+      }
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manufacturer", "model"],
+      "properties": {
+        "manufacturer": { "type": "string" },
+        "model": { "type": "string" },
+        "midiChannels": {
+          "description": "MIDI channel(s) the surface transmits on. The nanoKONTROL 2 uses a single global channel.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "integer", "minimum": 1, "maximum": 16 }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transport", "track", "cue", "channels"],
+      "properties": {
+        "transport": { "$ref": "#/$defs/group" },
+        "track": { "$ref": "#/$defs/group" },
+        "cue": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["cycle", "marker"],
+          "properties": {
+            "cycle": { "$ref": "#/$defs/control" },
+            "marker": { "$ref": "#/$defs/group" }
+          }
+        },
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": { "$ref": "#/$defs/channel" }
+        }
+      }
+    }
+  }
+}

@@ -62,7 +62,7 @@ void ofApp::setup()
 
     // --- Modulation (ofxModulation) ---
     // Example: a sine LFO that modulates uHue on whichever preset exposes it.
-    // CC 24 grabs depth, CC 25 grabs rate. Both start at 0 (LFO off).
+    // CC 22 (ch7 pot) grabs depth, CC 23 (ch8 pot) grabs rate. Both start at 0 (LFO off).
     modulation.setup();
     Lfo *hueLfo = modulation.createLfo("hue");
     hueLfo->addTarget(-1, "uHue");              // -1 = resolve by name across passes
@@ -72,8 +72,8 @@ void ofApp::setup()
     hueLfo->setDepth(0.0f);
     hueLfo->setDepthBindable(true);
     hueLfo->setRateBindable(true);
-    midi.bindContinuous(24, "hueLfoDepth", 0.02f);
-    midi.bindContinuous(25, "hueLfoRate", 0.02f);
+    midi.bindContinuous(22, "hueLfoDepth", 0.02f);
+    midi.bindContinuous(23, "hueLfoRate", 0.02f);
 
     // --- Camera ---
     videoInput.setup(ofGetWidth(), ofGetHeight());

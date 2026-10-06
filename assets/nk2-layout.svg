@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 3736 875" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <g id="Print---Cut-Line" affinity:id="Print - Cut Line">
+    </g>
+    <g id="bg" transform="matrix(4.166667,0,0,4.166667,3735.837958,61.83)">
+        <path d="M0,180.086C0,188.281 -6.645,194.925 -14.84,194.925L-881.762,194.925C-889.958,194.925 -896.602,188.281 -896.602,180.086L-896.602,0.001C-896.602,-8.195 -889.958,-14.839 -881.762,-14.839L-14.84,-14.839C-6.645,-14.839 0,-8.195 0,0.001L0,180.086Z" style="fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+    </g>
+    <g id="channels" transform="matrix(4.166667,0,0,4.166667,0,0)">
+        <g id="ch8">
+            <g id="Buttons" transform="matrix(1,0,0,1,546.72,0)">
+                <g id="CC71">
+                    <g id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1463.015px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC71</text>
+                    </g>
+                </g>
+                <g id="CC55">
+                    <g id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC55</text>
+                    </g>
+                </g>
+                <g id="CC39">
+                    <g id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC39</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader">
+                <g transform="matrix(1,0,0,1,860.98981,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,501.599989,151.409264)">
+                    <text x="1324.88px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC7</text>
+                </g>
+            </g>
+            <g id="Pot">
+                <g transform="matrix(0,-1,-1,0,856.54841,16.4292)">
+                    <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,535.439989,5.009264)">
+                    <text x="1285.048px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC23</text>
+                </g>
+            </g>
+            <g id="cut-markers" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,856.54961,10.3347)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,1721.98011,51.024)">
+                    <rect x="852.486" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch7">
+            <g id="Buttons1" affinity:id="Buttons" transform="matrix(1,0,0,1,468.48,0)">
+                <g id="CC70">
+                    <g id="Record1" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC70</text>
+                    </g>
+                </g>
+                <g id="CC54">
+                    <g id="Mute1" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC54</text>
+                    </g>
+                </g>
+                <g id="CC38">
+                    <g id="Solo1" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC38</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader1" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,782.89211,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,425.999989,151.409264)">
+                    <text x="1315.212px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC6</text>
+                </g>
+            </g>
+            <g id="Pot1" affinity:id="Pot">
+                <g transform="matrix(0.24,0,0,0.24,445.103989,5.009264)">
+                    <text x="1335.354px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC22</text>
+                </g>
+                <g transform="matrix(0,-1,-1,0,778.45071,16.4292)">
+                    <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+            </g>
+            <g id="cut-markers1" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,778.45141,10.3342)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,1565.78411,51.024)">
+                    <rect x="774.388" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch6">
+            <g id="Buttons2" affinity:id="Buttons" transform="matrix(1,0,0,1,390.48,0)">
+                <g id="CC69">
+                    <g id="Record2" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC69</text>
+                    </g>
+                </g>
+                <g id="CC53">
+                    <g id="Mute2" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC53</text>
+                    </g>
+                </g>
+                <g id="CC37">
+                    <g id="Solo2" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC37</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader2" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,704.79441,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,347.759989,151.409264)">
+                    <text x="1315.188px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC5</text>
+                </g>
+            </g>
+            <g id="Pot2" affinity:id="Pot">
+                <g transform="matrix(0,-1,-1,0,700.35311,16.4292)">
+                    <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,362.757293,5.009264)">
+                    <text x="1358.291px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC21</text>
+                </g>
+            </g>
+            <g id="cut-markers2" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,700.35381,10.3342)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,1409.58811,51.024)">
+                    <rect x="696.29" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch5">
+            <g id="Buttons3" affinity:id="Buttons" transform="matrix(1,0,0,1,312.48,0)">
+                <g id="CC68">
+                    <g id="Record3" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC68</text>
+                    </g>
+                </g>
+                <g id="CC52">
+                    <g id="Mute3" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC52</text>
+                    </g>
+                </g>
+                <g id="CC36">
+                    <g id="Solo3" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC36</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader3" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,626.69681,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,240.959989,151.649264)">
+                    <text x="1435.183px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC4</text>
+                </g>
+            </g>
+            <g id="Pot3" affinity:id="Pot">
+                <g id="CC20">
+                    <g transform="matrix(0,-1,-1,0,622.25541,16.4292)">
+                        <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,301.174629,5.009264)">
+                        <text x="1285.085px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC20</text>
+                    </g>
+                </g>
+            </g>
+            <g id="cut-markers3" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,622.25611,10.3342)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,1253.39411,51.024)">
+                    <rect x="618.193" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch4">
+            <g id="Buttons4" affinity:id="Buttons" transform="matrix(1,0,0,1,234.24,0)">
+                <g id="CC67">
+                    <g id="Record4" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC67</text>
+                    </g>
+                </g>
+                <g id="CC51">
+                    <g id="Mute4" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1463.015px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC51</text>
+                    </g>
+                </g>
+                <g id="CC35">
+                    <g id="Solo4" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC35</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader4" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,548.59821,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,162.719989,151.649264)">
+                    <text x="1435.183px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC3</text>
+                </g>
+            </g>
+            <g id="CC18">
+                <g transform="matrix(0,-1,-1,0,544.15681,16.4292)">
+                    <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,215.142059,5.009264)">
+                    <text x="1323.354px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC19</text>
+                </g>
+            </g>
+            <g id="cut-markers4" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,544.15751,10.3342)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,1097.19611,51.024)">
+                    <rect x="540.094" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch3">
+            <g id="Buttons5" affinity:id="Buttons" transform="matrix(1,0,0,1,156.24,0)">
+                <g id="CC66">
+                    <g id="Record5" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.217px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC66</text>
+                    </g>
+                </g>
+                <g id="CC50">
+                    <g id="Mute5" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC50</text>
+                    </g>
+                </g>
+                <g id="CC34">
+                    <g id="Solo5" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC34</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader5" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,470.52391,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.601,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.601,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,76.079989,151.649264)">
+                    <text x="1471.462px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC2</text>
+                </g>
+            </g>
+            <g id="Pot4" affinity:id="Pot">
+                <g id="CC181" affinity:id="CC18">
+                    <g transform="matrix(0.24,0,0,0.24,136.902059,5.009264)">
+                        <text x="1323.354px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC18</text>
+                    </g>
+                    <g transform="matrix(0,-1,-1,0,466.08261,16.4292)">
+                        <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                </g>
+            </g>
+            <g id="cut-markers5" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,466.05981,10.3342)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,941.00011,51.024)">
+                    <rect x="461.996" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="ch2">
+            <g id="Buttons6" affinity:id="Buttons" transform="matrix(1,0,0,1,78,0)">
+                <g id="CC65">
+                    <g id="Record6" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC65</text>
+                    </g>
+                </g>
+                <g id="CC49">
+                    <g id="Mute6" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC49</text>
+                    </g>
+                </g>
+                <g id="CC33">
+                    <g id="Solo6" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC33</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader6" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,392.40231,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.6,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.6,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-2.160011,151.649264)">
+                    <text x="1481.106px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC1</text>
+                </g>
+            </g>
+            <g id="Pot5" affinity:id="Pot">
+                <g id="CC17">
+                    <g transform="matrix(0.24,0,0,0.24,58.899129,5.009264)">
+                        <text x="1323.366px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC17</text>
+                    </g>
+                </g>
+                <g transform="matrix(0,-1,-1,0,387.96201,16.4292)">
+                    <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+            </g>
+            <g id="cut-markers6" affinity:id="cut markers">
+                <g transform="matrix(0,-1,-1,0,387.96221,10.3347)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(-1,0,0,1,784.80411,51.024)">
+                    <rect x="383.898" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+        <g id="Pot6" affinity:id="Pot">
+        </g>
+        <g id="ch1">
+            <g id="Buttons7" affinity:id="Buttons">
+                <g id="CC64">
+                    <g id="Record7" affinity:id="Record" transform="matrix(1,0,0,1,287.13041,168.9557)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,108.853841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC64</text>
+                    </g>
+                </g>
+                <g id="CC48">
+                    <g id="Mute7" affinity:id="Mute" transform="matrix(1,0,0,1,287.13041,126.0563)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.543 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.543 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.611269,65.893841)">
+                        <text x="1458.193px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC48</text>
+                    </g>
+                </g>
+                <g id="CC32">
+                    <g id="Solo7" affinity:id="Solo" transform="matrix(1,0,0,1,287.13041,83.1588)">
+                        <path d="M0,16.866C0,19.41 -2.062,21.472 -4.606,21.472L-21.472,21.472C-24.016,21.472 -26.079,19.41 -26.079,16.866L-26.079,-0C-26.079,-2.544 -24.016,-4.606 -21.472,-4.606L-4.606,-4.606C-2.062,-4.606 0,-2.544 0,-0L0,16.866Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-88.614199,22.933841)">
+                        <text x="1458.205px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC32</text>
+                    </g>
+                </g>
+            </g>
+            <g id="Fader7" affinity:id="Fader">
+                <g transform="matrix(1,0,0,1,314.30421,83.6792)">
+                    <path d="M0,101.496C0,103.845 -1.904,105.748 -4.252,105.748C-6.6,105.748 -8.504,103.845 -8.504,101.496L-8.504,-0C-8.504,-2.348 -6.6,-4.252 -4.252,-4.252C-1.904,-4.252 0,-2.348 0,-0L0,101.496Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-80.160011,151.649264)">
+                    <text x="1471.462px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC0</text>
+                </g>
+            </g>
+            <g id="Pot7" affinity:id="Pot">
+                <g id="CC16">
+                    <g transform="matrix(0,-1,-1,0,309.86381,16.4292)">
+                        <circle cx="-13.748" cy="0" r="13.748" style="fill:white;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                    </g>
+                    <g transform="matrix(0.24,0,0,0.24,-19.440011,4.769264)">
+                        <text x="1323.378px" y="227.994px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC16</text>
+                    </g>
+                </g>
+            </g>
+            <g id="cut-markers7" affinity:id="cut markers">
+                <g id="Ellipse" transform="matrix(0,-1,-1,0,309.86401,10.3347)">
+                    <ellipse cx="-19.843" cy="0" rx="19.842" ry="19.843" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+                <g id="Rectangle" transform="matrix(-1,0,0,1,628.60811,51.024)">
+                    <rect x="305.8" y="8.504" width="25.512" height="150.236" style="fill:none;stroke:rgb(30,26,59);stroke-width:0.25px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g id="master" transform="matrix(4.166667,0,0,4.166667,0,0)">
+        <g id="transport">
+            <g id="CC45">
+                <g transform="matrix(1,0,0,1,232.79201,168.7663)">
+                    <path d="M0,17.489C0,21.583 -3.319,24.902 -7.413,24.902L-24.902,24.902C-28.996,24.902 -32.315,21.583 -32.315,17.489L-32.315,-0.001C-32.315,-4.095 -28.996,-7.413 -24.902,-7.413L-7.413,-7.413C-3.319,-7.413 0,-4.095 0,-0.001L0,17.489Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-9.412787,-43.094288)">
+                    <text x="889.691px" y="849.401px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC45</text>
+                </g>
+            </g>
+            <g id="CC41">
+                <g transform="matrix(1,0,0,1,188.85451,168.7663)">
+                    <path d="M0,17.489C0,21.583 -3.319,24.902 -7.413,24.902L-24.902,24.902C-28.996,24.902 -32.315,21.583 -32.315,17.489L-32.315,-0.001C-32.315,-4.095 -28.996,-7.413 -24.902,-7.413L-7.413,-7.413C-3.319,-7.413 0,-4.095 0,-0.001L0,17.489Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-53.812787,-43.094288)">
+                    <text x="894.513px" y="849.401px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC41</text>
+                </g>
+            </g>
+            <g id="CC42">
+                <g transform="matrix(1,0,0,1,144.91751,168.7663)">
+                    <path d="M0,17.489C0,21.583 -3.319,24.902 -7.413,24.902L-24.902,24.902C-28.996,24.902 -32.315,21.583 -32.315,17.489L-32.315,-0.001C-32.315,-4.095 -28.996,-7.413 -24.902,-7.413L-7.413,-7.413C-3.319,-7.413 0,-4.095 0,-0.001L0,17.489Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,74.926338,40.757142)">
+                    <text x="171.798px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC42</text>
+                </g>
+            </g>
+            <g id="CC44">
+                <g transform="matrix(1,0,0,1,100.97951,168.7663)">
+                    <path d="M0,17.489C0,21.583 -3.319,24.902 -7.413,24.902L-24.902,24.902C-28.996,24.902 -32.315,21.583 -32.315,17.489L-32.315,-0.001C-32.315,-4.095 -28.996,-7.413 -24.902,-7.413L-7.413,-7.413C-3.319,-7.413 0,-4.095 0,-0.001L0,17.489Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,30.743298,40.757142)">
+                    <text x="171.786px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC44</text>
+                </g>
+            </g>
+            <g id="CC43">
+                <g transform="matrix(1,0,0,1,57.04201,168.7663)">
+                    <path d="M0,17.489C0,21.583 -3.319,24.902 -7.413,24.902L-24.902,24.902C-28.996,24.902 -32.315,21.583 -32.315,17.489L-32.315,-0.001C-32.315,-4.095 -28.996,-7.413 -24.902,-7.413L-7.413,-7.413C-3.319,-7.413 0,-4.095 0,-0.001L0,17.489Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-13.176702,40.757142)">
+                    <text x="171.786px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC43</text>
+                </g>
+            </g>
+        </g>
+        <g id="cue">
+            <g id="CC62" transform="matrix(1,0,0,1,88.008,0)">
+                <g transform="matrix(0.24,0,0,0.24,74.995408,5.477142)">
+                    <text x="171.811px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC62</text>
+                </g>
+                <g transform="matrix(1,0,0,1,145.976,134.6782)">
+                    <path d="M0,0C0,4.696 -3.807,8.504 -8.504,8.504L-25.512,8.504C-30.208,8.504 -34.016,4.696 -34.016,0C-34.016,-4.696 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.696 0,0Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+            </g>
+            <g id="CC61" transform="matrix(1,0,0,1,44.04,0)">
+                <g transform="matrix(0.24,0,0,0.24,74.995408,5.477142)">
+                    <text x="176.62px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC61</text>
+                </g>
+                <g transform="matrix(1,0,0,1,145.976,134.6782)">
+                    <path d="M0,0C0,4.696 -3.807,8.504 -8.504,8.504L-25.512,8.504C-30.208,8.504 -34.016,4.696 -34.016,0C-34.016,-4.696 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.696 0,0Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+            </g>
+            <g id="CC60">
+                <g transform="matrix(0.24,0,0,0.24,74.995408,5.477142)">
+                    <text x="171.798px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC60</text>
+                </g>
+                <g transform="matrix(1,0,0,1,145.976,134.6782)">
+                    <path d="M0,0C0,4.696 -3.807,8.504 -8.504,8.504L-25.512,8.504C-30.208,8.504 -34.016,4.696 -34.016,0C-34.016,-4.696 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.696 0,0Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+            </g>
+            <g id="CC46">
+                <g transform="matrix(1,0,0,1,57.89261,134.6782)">
+                    <path d="M0,0C0,4.696 -3.807,8.504 -8.504,8.504L-25.512,8.504C-30.208,8.504 -34.016,4.696 -34.016,0C-34.016,-4.696 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.696 0,0Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,-13.170686,5.477142)">
+                    <text x="171.798px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC46</text>
+                </g>
+            </g>
+        </g>
+        <g id="track">
+            <g id="CC59">
+                <g transform="matrix(1,0,0,1,101.81261,98.8461)">
+                    <path d="M0,-0.001C0,4.696 -3.807,8.503 -8.504,8.503L-25.512,8.503C-30.208,8.503 -34.016,4.696 -34.016,-0.001C-34.016,-4.697 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.697 0,-0.001Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,44.303298,-30.282858)">
+                    <text x="115.182px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC59</text>
+                </g>
+            </g>
+            <g id="CC58">
+                <g transform="matrix(1,0,0,1,57.89261,98.8461)">
+                    <path d="M0,-0.001C0,4.696 -3.807,8.503 -8.504,8.503L-25.512,8.503C-30.208,8.503 -34.016,4.696 -34.016,-0.001C-34.016,-4.697 -30.208,-8.504 -25.512,-8.504L-8.504,-8.504C-3.807,-8.504 0,-4.697 0,-0.001Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+                </g>
+                <g transform="matrix(0.24,0,0,0.24,0.383298,-30.282858)">
+                    <text x="115.182px" y="500.02px" style="font-family:'DegenerateVCRRegular', 'Degenerate VCR';font-size:50px;fill:white;">CC58</text>
+                </g>
+            </g>
+        </g>
+    </g>
+    <g id="power-indicator-light" affinity:id="power indicator light" transform="matrix(4.166667,0,0,4.166667,128.727125,64.975833)">
+        <path d="M0,-0.001C0,1.565 -1.269,2.834 -2.834,2.834L-14.173,2.834C-15.739,2.834 -17.008,1.565 -17.008,-0.001C-17.008,-1.566 -15.739,-2.835 -14.173,-2.835L-2.834,-2.835C-1.269,-2.835 0,-1.566 0,-0.001Z" style="fill:white;fill-rule:nonzero;stroke:rgb(5,3,17);stroke-width:0.25px;"/>
+    </g>
+    <g id="No-Print---Covered-Line" affinity:id="No Print - Covered Line">
+    </g>
+</svg>

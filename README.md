@@ -84,7 +84,7 @@ All 10 core abstractions extracted from the three predecessor projects:
 | 5 | feedback trail | 1 | uMix, uDecay, uSaturation (reads source + own previous frame) | CC 0-2 |
 | 6 | source blend | 2 | sharpen(uAmount) → blend(prev ↔ source, uMix) | CC 0-3 |
 
-Presets are defined in `ShaderPresets::setup()`. Each param maps to a MIDI CC (sliders CC 0-7, knobs CC 16-23). Switching presets automatically remaps MIDI bindings.
+Presets are defined in `ShaderPresets::setup()`. Each param maps to a MIDI CC (sliders CC 0-7, knobs CC 16-21). The last two pots (CC 22-23) are reserved for the LFO controls. Switching presets automatically remaps MIDI bindings.
 
 Presets 5-6 demonstrate the multi-texture signal-flow extensions: a pass can bind **several named samplers** simultaneously, each fed from the source texture, the previous pass output, or the pass's *own* previous frame (temporal feedback). Both compass bearings come from `datamosh` (per-stage feedback pairs + multi-texture inputs) and `LightHerderDevice` (self-history loops).
 
@@ -151,7 +151,7 @@ frame and applied additively on top of the MIDI/preset base values, so it works
 with any preset that exposes a matching param name.
 
 The bundled example creates one sine LFO ("hue") pointed at the `uHue` param
-(CC 24 = depth, CC 25 = rate). Toggle the waveform with `L`.
+(CC 22 = depth, CC 23 = rate). Toggle the waveform with `L`.
 
 ```cpp
 // ofApp::setup()
@@ -191,9 +191,9 @@ step-sequenced parameter automation.
 | CC | Binding | Range |
 |---|---|---|
 | 0-7 | slider0-7 (param mapping per preset) | -1.0 – 1.0 → mapped to param min/max |
-| 16-23 | knob0-7 (param mapping per preset) | -1.0 – 1.0 → mapped to param min/max |
-| 24 | hueLfoDepth (LFO depth on `uHue`) | -1.0 – 1.0 → 0.0 – 1.0 |
-| 25 | hueLfoRate (LFO rate on `uHue`) | -1.0 – 1.0 → 0.02 – 2.0 Hz |
+| 16-21 | knob0-5 (param mapping per preset) | -1.0 – 1.0 → mapped to param min/max |
+| 22 | hueLfoDepth (LFO depth on `uHue`, ch7 pot) | -1.0 – 1.0 → 0.0 – 1.0 |
+| 23 | hueLfoRate (LFO rate on `uHue`, ch8 pot) | -1.0 – 1.0 → 0.02 – 2.0 Hz |
 | 41 | prevPreset (trigger) | edge |
 | 42 | nextPreset (trigger) | edge |
 | 43 | debug (trigger) | edge |

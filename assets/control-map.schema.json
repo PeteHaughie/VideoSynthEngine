@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "nanoKONTROL 2 control map",
+  "description": "Binds physical nanoKONTROL 2 controls (defined in nk2-layout.json) to application targets, and records application targets whose MIDI CC has no control on the surface. The device layout describes the hardware; this map describes what the running app does with it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["device", "bindings"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "device": {
+      "description": "Path (relative to this file) to the device layout this map refers to.",
+      "type": "string"
+    },
+    "notes": { "type": "string" },
+    "bindings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/binding" }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "description": "Device control id as used in the layout file (e.g. ch1.fader, transport.play).",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9]+)*$"
+    },
+    "rangePair": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "number" }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cc", "target", "kind"],
+      "properties": {
+        "cc": {
+          "description": "MIDI Control Change number the app listens on.",
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "control": {
+          "description": "Device control id from the layout. Omit when the CC has no control on this surface (e.g. an external controller).",
+          "$ref": "#/$defs/identifier"
+        },
+        "target": {
+          "description": "Application-side binding name (e.g. slider0, prevPreset, hueLfoDepth).",
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "description": "continuous = analog value; trigger = edge/fired event.",
+          "enum": ["continuous", "trigger"]
+        },
+        "scope": {
+          "description": "global = fixed target; preset = target depends on the active preset.",
+          "enum": ["global", "preset"],
+          "default": "global"
+        },
+        "range": {
+          "description": "Optional input/output mapping applied to the incoming value.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["in"],
+          "properties": {
+            "in": { "$ref": "#/$defs/rangePair" },
+            "out": { "$ref": "#/$defs/rangePair" }
+          }
+        },
+        "condition": {
+          "description": "Runtime condition under which this binding is active.",
+          "type": "string"
+        },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

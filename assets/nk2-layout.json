@@ -1,268 +1,124 @@
 {
-  "layout": {
-    "master": {
-      "track": [
-        {
-          "label": "left",
-          "cc": 58
-        },
-        {
-          "label": "right",
-          "cc": 59
-        }
-      ],
-      "cue": [
-        {
-          "label": "cycle",
-          "cc": 46
-        },
-        {
-          "marker": [
-            {
-              "label": "set",
-              "cc": 60
-            },
-            {
-              "label": "left",
-              "cc": 61
-            },
-            {
-              "label": "right",
-              "cc": 62
-            }
-          ]
-        }
-      ],
-      "transport": [
-        {
-          "label": "reverse",
-          "cc": 43
-        },
-        {
-          "label": "forward",
-          "cc": 44
-        },
-        {
-          "label": "stop",
-          "cc": 42
-        },
-        {
-          "label": "play",
-          "cc": 41
-        },
-        {
-          "label": "record",
-          "cc": 45
-        }
+  "$schema": "./nk2-layout.schema.json",
+  "device": {
+    "manufacturer": "Korg",
+    "model": "nanoKONTROL2",
+    "midiChannels": [1],
+    "notes": "All controls transmit 7-bit values (0-127) on a single global MIDI channel. CC numbers are the factory defaults (MIDI CC mode)."
+  },
+  "surface": {
+    "transport": {
+      "controls": [
+        { "id": "transport.record", "label": "REC", "cc": 45, "type": "button" },
+        { "id": "transport.play", "label": "PLAY", "cc": 41, "type": "button" },
+        { "id": "transport.stop", "label": "STOP", "cc": 42, "type": "button" },
+        { "id": "transport.reverse", "label": "REW", "cc": 43, "type": "button" },
+        { "id": "transport.forward", "label": "FF", "cc": 44, "type": "button" }
       ]
     },
-    "controls": [
+    "track": {
+      "controls": [
+        { "id": "track.left", "label": "TRACK <", "cc": 58, "type": "button" },
+        { "id": "track.right", "label": "TRACK >", "cc": 59, "type": "button" }
+      ]
+    },
+    "cue": {
+      "cycle": { "id": "cue.cycle", "label": "CYCLE", "cc": 46, "type": "button" },
+      "marker": {
+        "controls": [
+          { "id": "marker.set", "label": "SET", "cc": 60, "type": "button" },
+          { "id": "marker.left", "label": "MARKER <", "cc": 61, "type": "button" },
+          { "id": "marker.right", "label": "MARKER >", "cc": 62, "type": "button" }
+        ]
+      }
+    },
+    "channels": [
       {
-        "group1": {
-          "pot": {
-            "label": "pot",
-            "cc": 16
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 0
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 32
-            },
-            {
-              "label": "solo",
-              "cc": 48
-            },
-            {
-              "label": "record",
-              "cc": 64
-            }
-          ]
+        "id": "ch1",
+        "label": "1",
+        "fader": { "id": "ch1.fader", "cc": 0, "type": "fader" },
+        "pot": { "id": "ch1.pot", "cc": 16, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch1.solo", "label": "SOLO", "cc": 32, "type": "button" },
+          "mute": { "id": "ch1.mute", "label": "MUTE", "cc": 48, "type": "button" },
+          "record": { "id": "ch1.record", "label": "REC", "cc": 64, "type": "button" }
         }
       },
       {
-        "group2": {
-          "pot": {
-            "label": "pot",
-            "cc": 17
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 1
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 33
-            },
-            {
-              "label": "solo",
-              "cc": 49
-            },
-            {
-              "label": "record",
-              "cc": 65
-            }
-          ]
+        "id": "ch2",
+        "label": "2",
+        "fader": { "id": "ch2.fader", "cc": 1, "type": "fader" },
+        "pot": { "id": "ch2.pot", "cc": 17, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch2.solo", "label": "SOLO", "cc": 33, "type": "button" },
+          "mute": { "id": "ch2.mute", "label": "MUTE", "cc": 49, "type": "button" },
+          "record": { "id": "ch2.record", "label": "REC", "cc": 65, "type": "button" }
         }
       },
       {
-        "group3": {
-          "pot": {
-            "label": "pot",
-            "cc": 18
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 2
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 34
-            },
-            {
-              "label": "solo",
-              "cc": 50
-            },
-            {
-              "label": "record",
-              "cc": 66
-            }
-          ]
+        "id": "ch3",
+        "label": "3",
+        "fader": { "id": "ch3.fader", "cc": 2, "type": "fader" },
+        "pot": { "id": "ch3.pot", "cc": 18, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch3.solo", "label": "SOLO", "cc": 34, "type": "button" },
+          "mute": { "id": "ch3.mute", "label": "MUTE", "cc": 50, "type": "button" },
+          "record": { "id": "ch3.record", "label": "REC", "cc": 66, "type": "button" }
         }
       },
       {
-        "group4": {
-          "pot": {
-            "label": "pot",
-            "cc": 19
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 3
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 35
-            },
-            {
-              "label": "solo",
-              "cc": 51
-            },
-            {
-              "label": "record",
-              "cc": 67
-            }
-          ]
+        "id": "ch4",
+        "label": "4",
+        "fader": { "id": "ch4.fader", "cc": 3, "type": "fader" },
+        "pot": { "id": "ch4.pot", "cc": 19, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch4.solo", "label": "SOLO", "cc": 35, "type": "button" },
+          "mute": { "id": "ch4.mute", "label": "MUTE", "cc": 51, "type": "button" },
+          "record": { "id": "ch4.record", "label": "REC", "cc": 67, "type": "button" }
         }
       },
       {
-        "group5": {
-          "pot": {
-            "label": "pot",
-            "cc": 20
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 4
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 36
-            },
-            {
-              "label": "solo",
-              "cc": 52
-            },
-            {
-              "label": "record",
-              "cc": 68
-            }
-          ]
+        "id": "ch5",
+        "label": "5",
+        "fader": { "id": "ch5.fader", "cc": 4, "type": "fader" },
+        "pot": { "id": "ch5.pot", "cc": 20, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch5.solo", "label": "SOLO", "cc": 36, "type": "button" },
+          "mute": { "id": "ch5.mute", "label": "MUTE", "cc": 52, "type": "button" },
+          "record": { "id": "ch5.record", "label": "REC", "cc": 68, "type": "button" }
         }
       },
       {
-        "group6": {
-          "pot": {
-            "label": "pot6",
-            "cc": 21
-          },
-          "fader": {
-            "label": "fader6",
-            "cc": 5
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 37
-            },
-            {
-              "label": "solo",
-              "cc": 53
-            },
-            {
-              "label": "record",
-              "cc": 69
-            }
-          ]
+        "id": "ch6",
+        "label": "6",
+        "fader": { "id": "ch6.fader", "cc": 5, "type": "fader" },
+        "pot": { "id": "ch6.pot", "cc": 21, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch6.solo", "label": "SOLO", "cc": 37, "type": "button" },
+          "mute": { "id": "ch6.mute", "label": "MUTE", "cc": 53, "type": "button" },
+          "record": { "id": "ch6.record", "label": "REC", "cc": 69, "type": "button" }
         }
       },
       {
-        "group7": {
-          "pot": {
-            "label": "pot",
-            "cc": 22
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 6
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 38
-            },
-            {
-              "label": "solo",
-              "cc": 54
-            },
-            {
-              "label": "record",
-              "cc": 70
-            }
-          ]
+        "id": "ch7",
+        "label": "7",
+        "fader": { "id": "ch7.fader", "cc": 6, "type": "fader" },
+        "pot": { "id": "ch7.pot", "cc": 22, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch7.solo", "label": "SOLO", "cc": 38, "type": "button" },
+          "mute": { "id": "ch7.mute", "label": "MUTE", "cc": 54, "type": "button" },
+          "record": { "id": "ch7.record", "label": "REC", "cc": 70, "type": "button" }
         }
       },
       {
-        "group8": {
-          "pot": {
-            "label": "pot",
-            "cc": 23
-          },
-          "fader": {
-            "label": "fader",
-            "cc": 7
-          },
-          "buttons": [
-            {
-              "label": "mute",
-              "cc": 39
-            },
-            {
-              "label": "solo",
-              "cc": 55
-            },
-            {
-              "label": "record",
-              "cc": 71
-            }
-          ]
+        "id": "ch8",
+        "label": "8",
+        "fader": { "id": "ch8.fader", "cc": 7, "type": "fader" },
+        "pot": { "id": "ch8.pot", "cc": 23, "type": "knob" },
+        "buttons": {
+          "solo": { "id": "ch8.solo", "label": "SOLO", "cc": 39, "type": "button" },
+          "mute": { "id": "ch8.mute", "label": "MUTE", "cc": 55, "type": "button" },
+          "record": { "id": "ch8.record", "label": "REC", "cc": 71, "type": "button" }
         }
       }
     ]

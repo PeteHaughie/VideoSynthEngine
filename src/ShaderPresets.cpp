@@ -105,7 +105,8 @@ void ShaderPresets::loadInto(ShaderManager &shaders, int index,
     int paramSlot = 0;
     for (size_t p = 0; p < preset.passes.size(); p++)
     {
-        for (size_t i = 0; i < shaders.getParams(p).size() && paramSlot < 16; i++, paramSlot++)
+        // Slots 14-15 (CC 22/23) are reserved for the LFO controls.
+        for (size_t i = 0; i < shaders.getParams(p).size() && paramSlot < 14; i++, paramSlot++)
         {
             int cc = (paramSlot < 8) ? sliderCCs[paramSlot] : knobCCs[paramSlot - 8];
             shaders.bindMidiParam(shaders.getParams(p)[i].name, cc);
